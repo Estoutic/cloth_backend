@@ -1,5 +1,6 @@
 package com.sergio.jwt.backend.entites;
 
+import com.sergio.jwt.backend.entites.tobacoo.Product;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,7 +28,7 @@ public class Order {
     private Long userId;
 
     @ElementCollection
-    private List<OrderItem> items;
+    private List<com.sergio.jwt.backend.entites.Order.OrderItem> items;
 
     @Column(nullable = false)
     private int totalPrice;
@@ -46,9 +47,9 @@ public class Order {
     @Embeddable
     @Data
     public static class OrderItem {
-        private String id;
-        private String name;
-        private String imageLink;
+        @ManyToOne
+        @JoinColumn(name = "product_id")
+        private Product product;
         private int price;
         private int count;
     }
