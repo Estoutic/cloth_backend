@@ -8,8 +8,10 @@ import java.util.List;
 public interface ProductService {
 
     String saveCategory(String categoryName);
+
     List<CategoryDto> getAllCategories();
 
     String saveProduct(ProductDto productDto);
-    List<ProductDto> getAllProducts(String id);
+
+    List<ProductDto> getAllProducts(String categoryName);
 }

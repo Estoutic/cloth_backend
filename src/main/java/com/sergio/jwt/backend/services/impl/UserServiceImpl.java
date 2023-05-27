@@ -58,5 +58,10 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() -> new AppException("Unknown user", HttpStatus.NOT_FOUND));
         return userMapper.toUserDto(user);
     }
+    public Long getUserId(String phone){
+        User user = userRepository.findByPhone(phone)
+                .orElseThrow(() -> new AppException("Unknown user", HttpStatus.NOT_FOUND));
+        return user.getId();
+    }
 
 }

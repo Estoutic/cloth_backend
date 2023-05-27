@@ -7,8 +7,10 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.sergio.jwt.backend.dtos.UserDto;
 import com.sergio.jwt.backend.services.impl.UserServiceImpl;
 import jakarta.annotation.PostConstruct;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
@@ -28,7 +30,6 @@ public class UserAuthenticationProvider {
 
     @PostConstruct
     protected void init() {
-        // this is to avoid having the raw secret key available in the JVM
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
     }
 
@@ -76,4 +77,22 @@ public class UserAuthenticationProvider {
         return new UsernamePasswordAuthenticationToken(user, null, Collections.emptyList());
     }
 
+    public Long getUserId(HttpServletRequest request){
+        String header = request.getHeader(HttpHeaders.AUTHORIZATION);
+
+        if (header != null) {
+            String token = header.split(" ")[1];
+            Algorithm algorithm = Algorithm.HMAC256(secretKey);
+
+            JWTVerifier verifier = JWT.require(algorithm)
+                    .build();
+
+            DecodedJWT decoded = verifier.verify(token);
+
+           return  userServiceImpl.getUserId(decoded.getIssuer());
+
+            }
+        return null;
+
+    }
 }

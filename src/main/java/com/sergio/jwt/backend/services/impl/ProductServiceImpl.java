@@ -51,8 +51,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductDto> getAllProducts(String id){
-        Category category = categoryRepository.findById(id).orElseThrow(() -> new RuntimeException("category does not exist"));
+    public List<ProductDto> getAllProducts(String categoryName){
+        Category category = categoryRepository.findByName(categoryName);
+        if(category == null){
+            throw new RuntimeException("category does not exist");
+        }
         return productRepository.findAllByCategory(category).stream().map(ProductDto::new).toList();
     }
 }

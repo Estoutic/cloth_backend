@@ -29,7 +29,7 @@ public class ProductDto {
         this.name = product.getName();
         this.imageLink = product.getImageLink();
         this.price = product.getPrice();
-        this.count = getCount();
+        this.count = product.getCount();
         this.categoryId = product.getCategory().getId();
     }
 }

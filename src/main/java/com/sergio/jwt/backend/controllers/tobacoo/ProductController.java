@@ -21,8 +21,8 @@ public class ProductController {
         return productService.saveProduct(productDto);
     }
 
-    @GetMapping("/category/{id}")
-    public List<ProductDto> findAllProducts(@PathVariable String id) {
-        return productService.getAllProducts(id);
+    @GetMapping("/category/{categoryName}")
+    public List<ProductDto> findAllProducts(@PathVariable String categoryName) {
+        return productService.getAllProducts(categoryName);
     }
 }
