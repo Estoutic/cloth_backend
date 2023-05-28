@@ -15,7 +15,6 @@ public class UserDto {
     private String firstName;
     private String surName;
     private String lastName;
-    private int bonus;
     private String phone;
     private String token;
 
