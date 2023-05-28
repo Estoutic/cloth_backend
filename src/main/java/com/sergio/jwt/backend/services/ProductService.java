@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ProductService {
 
-    String saveCategory(String categoryName);
+    String saveCategory(CategoryDto categoryDto);
 
     List<CategoryDto> getAllCategories();
 

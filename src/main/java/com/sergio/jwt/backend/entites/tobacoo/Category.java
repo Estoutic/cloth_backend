@@ -1,5 +1,6 @@
 package com.sergio.jwt.backend.entites.tobacoo;
 
+import com.sergio.jwt.backend.dtos.tobacoo.CategoryDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,8 +37,12 @@ public class Category {
     @Column(nullable=false)
     private String name;
 
-    public Category(String name) {
-        this.name = name;
+    @Column(nullable=false)
+    private String title;
+
+    public Category(CategoryDto categoryDto) {
+        this.name = categoryDto.getName();
+        this.title = categoryDto.getTitle();
     }
 
 }

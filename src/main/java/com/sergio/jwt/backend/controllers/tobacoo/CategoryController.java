@@ -21,8 +21,8 @@ public class CategoryController {
         return productService.getAllCategories();
     }
 
-    @PostMapping("/add/{name}")
-    public String addCategory(@PathVariable String name) {
-        return productService.saveCategory(name);
+    @PostMapping()
+    public String addCategory(@RequestBody() CategoryDto categoryDto) {
+        return productService.saveCategory(categoryDto);
     }
 }

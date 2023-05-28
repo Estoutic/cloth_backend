@@ -23,11 +23,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public String saveCategory(String categoryName) {
-        if (categoryRepository.existsByName(categoryName)) {
+    public String saveCategory(CategoryDto categoryDto) {
+        if (categoryRepository.existsByName(categoryDto.getName())) {
             throw new RuntimeException("category already exist");
         }
-        Category category = new Category(categoryName);
+        Category category = new Category(categoryDto);
         categoryRepository.save(category);
         return category.getId();
     }

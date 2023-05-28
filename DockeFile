@@ -1,0 +1,16 @@
+FROM maven:3.9.0-amazoncorretto-19 AS build
+
+COPY src /home/projects/tobaco_backend/src
+COPY pom.xml /home/projects/tobaco_backend/
+WORKDIR /home/projects/tobaco_backend/
+
+RUN mvn -f /home/projects/tobaco_backend/pom.xml clean package
+
+#
+# Package stage
+#
+
+FROM amazoncorretto:19-alpine
+COPY --from=build /home/projects/tobaco_backend/target/score_service-1.0.0.jar /usr/local/lib/tobaco_backend-1.0.0.jar
+
+ENTRYPOINT ["java","-jar","/usr/local/lib/tobaco_backend-1.0.0.jar"]
