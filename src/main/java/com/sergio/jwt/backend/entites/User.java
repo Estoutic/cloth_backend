@@ -7,6 +7,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -41,4 +44,8 @@ public class User {
     @Column(nullable = false)
     @Size(max = 100)
     private String password;
+
+    @OneToMany(mappedBy="user", fetch=FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval=true)
+    private List<ProductList> productLists = new ArrayList<>();
+
 }

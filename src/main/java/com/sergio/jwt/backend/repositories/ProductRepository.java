@@ -1,7 +1,7 @@
 package com.sergio.jwt.backend.repositories;
 
-import com.sergio.jwt.backend.entites.tobacoo.Category;
-import com.sergio.jwt.backend.entites.tobacoo.Product;
+import com.sergio.jwt.backend.entites.cloth.Category;
+import com.sergio.jwt.backend.entites.cloth.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

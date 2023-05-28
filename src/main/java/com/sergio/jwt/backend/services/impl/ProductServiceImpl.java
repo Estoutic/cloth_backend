@@ -1,9 +1,9 @@
 package com.sergio.jwt.backend.services.impl;
 
-import com.sergio.jwt.backend.dtos.tobacoo.CategoryDto;
-import com.sergio.jwt.backend.dtos.tobacoo.ProductDto;
-import com.sergio.jwt.backend.entites.tobacoo.Category;
-import com.sergio.jwt.backend.entites.tobacoo.Product;
+import com.sergio.jwt.backend.dtos.cloth.CategoryDto;
+import com.sergio.jwt.backend.dtos.cloth.ProductDto;
+import com.sergio.jwt.backend.entites.cloth.Category;
+import com.sergio.jwt.backend.entites.cloth.Product;
 import com.sergio.jwt.backend.repositories.CategoryRepository;
 import com.sergio.jwt.backend.repositories.ProductRepository;
 import com.sergio.jwt.backend.services.ProductService;

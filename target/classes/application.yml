@@ -3,7 +3,7 @@ security.jwt.token.secret-key: my-secret-key
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://213.183.41.33:5432/test_tobacoo
+    url: jdbc:postgresql://213.183.41.33:5432/dev_cloth
     username: admin@admin.com
     password: admin
   jpa:

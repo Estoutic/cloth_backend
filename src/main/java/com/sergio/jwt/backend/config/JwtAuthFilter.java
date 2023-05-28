@@ -37,7 +37,6 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                                 userAuthenticationProvider.validateTokenStrongly(authElements[1]));
                     }
                 } catch (RuntimeException e) {
-                    SecurityContextHolder.clearContext();
                     throw e;
                 }
             }

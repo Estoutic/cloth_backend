@@ -1,7 +1,7 @@
 package com.sergio.jwt.backend.services;
 
-import com.sergio.jwt.backend.dtos.tobacoo.CategoryDto;
-import com.sergio.jwt.backend.dtos.tobacoo.ProductDto;
+import com.sergio.jwt.backend.dtos.cloth.CategoryDto;
+import com.sergio.jwt.backend.dtos.cloth.ProductDto;
 
 import java.util.List;
 

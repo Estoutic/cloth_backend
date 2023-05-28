@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.sergio.jwt</groupId>
-    <artifactId>tobacoo_backend</artifactId>
+    <artifactId>cloth_backend</artifactId>
     <version>1.0.0</version>
 
     <parent>
