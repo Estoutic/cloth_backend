@@ -1,9 +1,6 @@
 package com.sergio.jwt.backend.services.impl;
 
-import com.sergio.jwt.backend.dtos.cloth.ProductDto;
-import com.sergio.jwt.backend.dtos.cloth.ProductListDto;
-import com.sergio.jwt.backend.dtos.cloth.PurchaseDto;
-import com.sergio.jwt.backend.dtos.cloth.ResponseProductListDto;
+import com.sergio.jwt.backend.dtos.cloth.*;
 import com.sergio.jwt.backend.entites.ProductList;
 import com.sergio.jwt.backend.entites.User;
 import com.sergio.jwt.backend.entites.cloth.Product;
@@ -37,10 +34,10 @@ public class ProductListServiceImpl implements ProductListService {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found with id " + userId));
 
-        ProductList productList = new ProductList(purchaseDto.getName(),user);
+        ProductList productList = new ProductList(purchaseDto.getName(), user);
 
         List<Product> productsToAdd = new ArrayList<>();
-        for (String id: purchaseDto.getProducts()){
+        for (String id : purchaseDto.getProducts()) {
             Product product = productRepository.findById(id).orElseThrow(() -> new RuntimeException("product does not exist"));
             productsToAdd.add(product);
         }
@@ -86,6 +83,26 @@ public class ProductListServiceImpl implements ProductListService {
         }
 
         return new ResponseProductListDto(productListDtos);
+    }
+
+    @Override
+    public List<ProductListNamesDto> findUserProductListNames(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found with id " + userId));
+
+        List<ProductList> productLists = productListRepository.findAllByUserAndDeletedFalse(user);
+
+        return productLists.stream()
+                .map(ProductListNamesDto::new).toList();
+    }
+
+    @Override
+    public ProductListDto findProductList(String id) {
+        ProductList productList = productListRepository.findById(Long.valueOf(id))
+                .orElseThrow(() -> new RuntimeException("product list does not exist"));
+        return new ProductListDto(productList.getName(), productList.getProducts().stream()
+                .map(ProductDto::new)
+                .toList());
     }
 
 }

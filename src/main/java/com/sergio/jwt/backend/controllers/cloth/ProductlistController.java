@@ -2,6 +2,7 @@ package com.sergio.jwt.backend.controllers.cloth;
 
 import com.sergio.jwt.backend.config.UserAuthenticationProvider;
 import com.sergio.jwt.backend.dtos.cloth.ProductListDto;
+import com.sergio.jwt.backend.dtos.cloth.ProductListNamesDto;
 import com.sergio.jwt.backend.dtos.cloth.PurchaseDto;
 import com.sergio.jwt.backend.dtos.cloth.ResponseProductListDto;
 import com.sergio.jwt.backend.services.ProductListService;
@@ -37,5 +38,13 @@ public class ProductlistController {
     @GetMapping()
     public ResponseProductListDto getUserProductLists(HttpServletRequest request){
         return purchaseService.findUserProductList(userAuthenticationProvider.getUserId(request));
+    }
+    @GetMapping("/names")
+    public List<ProductListNamesDto> getUserProductListsNames(HttpServletRequest request){
+        return purchaseService.findUserProductListNames(userAuthenticationProvider.getUserId(request));
+    }
+    @GetMapping("/{id}")
+    public ProductListDto getProductList(@PathVariable(name="id") String id){
+        return purchaseService.findProductList(id);
     }
 }
