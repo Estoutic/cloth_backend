@@ -49,7 +49,7 @@ public class ProductListServiceImpl implements ProductListService {
             if (productList.getProducts().contains(product)) {
                 throw new RuntimeException("Product already exists in product list");
             }
-            if (product.getCount() < 1) {
+            if (product.getCount() <= 1) {
                 throw new RuntimeException("Product count is 0");
             }
             productList.addProduct(product);
