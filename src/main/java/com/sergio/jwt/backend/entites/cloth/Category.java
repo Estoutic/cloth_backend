@@ -34,6 +34,11 @@ public class Category {
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime updatedAt;
 
+    public Category(String name, String title) {
+        this.name = name;
+        this.title = title;
+    }
+
     @Column(nullable=false)
     private String name;
 

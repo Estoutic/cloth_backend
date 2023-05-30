@@ -104,5 +104,4 @@ public class ProductListServiceImpl implements ProductListService {
                 .map(ProductDto::new)
                 .toList());
     }
-
 }

@@ -49,6 +49,14 @@ public class Product {
     @Column(nullable=false)
     private int count;
 
+    public Product(String name, String imageLink, int price, int count, Category category) {
+        this.name = name;
+        this.imageLink = imageLink;
+        this.price = price;
+        this.count = count;
+        this.category = category;
+    }
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
