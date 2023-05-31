@@ -1,15 +1,13 @@
-version: '3'
+version: "3.9"
+
 services:
-  score_service:
-    image: tobaco_backend
-    container_name: tobaco_backend
-    environment:
-      - spring.profiles.active=dev
-    ports:
-      - "8080:8080"
+  tabaco-back:
+    image: cloth_back:latest
+    container_name: cloth_back
     restart: unless-stopped
+    ports:
+      - 3200:8080
 
 networks:
-  score_service_default:
-    external:
-      name: tobaco_backend_default
+  main-net:
+    external: true
