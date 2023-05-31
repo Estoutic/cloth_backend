@@ -6,8 +6,8 @@ services:
     container_name: cloth_back
     restart: unless-stopped
     ports:
-      - 3200:8080
+      - 3400:8080
 
 networks:
-  main-net:
+  master-net:
     external: true
